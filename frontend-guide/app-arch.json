@@ -1,0 +1,129 @@
+{
+  "frontendArchitecture": {
+    "pages": [
+      {
+        "name": "Home",
+        "route": "/",
+        "features": ["Hero section", "Start Chat CTA", "Features overview", "Testimonials", "Language switcher", "Footer"]
+      },
+      {
+        "name": "Chat Interface",
+        "route": "/chat",
+        "features": ["Chat window", "Message input", "Typing indicator", "Suggested prompts", "Emotional detection", "Minimal header"]
+      },
+      {
+        "name": "Login",
+        "route": "/login",
+        "features": ["Email/password login", "Social login", "Continue as guest"]
+      },
+      {
+        "name": "Register",
+        "route": "/register",
+        "features": ["Sign-up form", "Optional goal setting"]
+      },
+      {
+        "name": "User Dashboard",
+        "route": "/dashboard",
+        "features": ["Chat session summary", "Mood tracking", "Goal tracker", "Start new session"]
+      },
+      {
+        "name": "Resources",
+        "route": "/resources",
+        "features": ["Articles", "Guided meditations", "Search", "Filters"]
+      },
+      {
+        "name": "Emergency Support",
+        "route": "/emergency",
+        "features": ["Hotlines", "Call/WhatsApp buttons", "Crisis detection integration"]
+      },
+      {
+        "name": "Privacy & Safety",
+        "route": "/privacy",
+        "features": ["Anonymity policy", "Data usage explanation"]
+      },
+      {
+        "name": "About",
+        "route": "/about",
+        "features": ["Vision", "Mission", "AI limitations disclaimer"]
+      },
+      {
+        "name": "404 Not Found",
+        "route": "*",
+        "features": ["Friendly message", "Link to home or chat"]
+      }
+    ],
+    "components": {
+      "chat": [
+        "ChatWindow",
+        "MessageBubble",
+        "TypingIndicator",
+        "MessageInputBox",
+        "SuggestedReplies",
+        "EmotionTagger",
+        "SessionEndModal"
+      ],
+      "navigation": [
+        "MainNavbar",
+        "Sidebar",
+        "Footer"
+      ],
+      "authentication": [
+        "LoginForm",
+        "RegisterForm",
+        "GuestContinueCard",
+        "SocialLoginButtons"
+      ],
+      "dashboard": [
+        "MoodTrackerGraph",
+        "ChatSummaryCard",
+        "GoalProgressWidget",
+        "NewSessionButton"
+      ],
+      "resources": [
+        "ResourceCard",
+        "ResourceSearchBar",
+        "ResourceFilterPanel",
+        "ResourceDetailsModal"
+      ],
+      "emergencySupport": [
+        "EmergencyCard",
+        "CountryHotlineList",
+        "QuickContactButton"
+      ],
+      "utilities": [
+        "LanguageSwitcher",
+        "ThemeToggle",
+        "ToastNotification",
+        "Modal",
+        "LoadingSpinner",
+        "Breadcrumbs"
+      ]
+    },
+    "stateManagement": {
+      "globalState": [
+        "authState",
+        "languagePreference",
+        "themeMode",
+        "chatSessionContext"
+      ],
+      "recommendedLibraries": [
+        "Zustand or Redux Toolkit or Jotai",
+        "react-i18next for localization",
+        "React Router for routing"
+      ]
+    },
+    "techStack": {
+      "framework": "React (Next.js or Vite)",
+      "styling": "Tailwind CSS",
+      "animations": "Framer Motion",
+      "localization": "i18next",
+      "designTokens": "Figma Tokens or Style Dictionary",
+      "pwaSupport": true
+    },
+    "testing": {
+      "unitTesting": ["Jest", "React Testing Library"],
+      "e2eTesting": ["Cypress", "Playwright"]
+    }
+  }
+}
+

@@ -1,0 +1,98 @@
+{
+  "brand": {
+    "nameSuggestions": ["SerenityAI", "Hale", "Sahha", "MindEcho", "Nafs"],
+    "mission": "To provide empathetic, accessible, and AI-powered mental and psychological support in a safe and calming digital space."
+  },
+  "visualIdentity": {
+    "colors": {
+      "primary": {
+        "name": "Soft Blue",
+        "hex": "#6FAEDC"
+      },
+      "primaryLight": {
+        "name": "Light Blue",
+        "hex": "#B0D6EB"
+      },
+      "secondary": {
+        "name": "Soft Lavender",
+        "hex": "#CBB7F0"
+      },
+      "accent": {
+        "name": "Sage Green",
+        "hex": "#C5E3CA"
+      },
+      "neutral": {
+        "light": "#F7F7F7",
+        "medium": "#C4C4C4"
+      }
+    },
+    "typography": {
+      "primaryFont": {
+        "english": "DM Sans",
+        "arabic": "Cairo"
+      },
+      "secondaryFont": {
+        "english": "Inter",
+        "arabic": "IBM Plex Arabic"
+      },
+      "bodyFont": "Nunito"
+    },
+    "logo": {
+      "concepts": [
+        "Chat bubble with heartbeat line",
+        "Hand cradling a speech bubble",
+        "Stylized brain and leaf combo"
+      ],
+      "styles": ["rounded", "organic", "scalable", "monochrome variants"]
+    },
+    "illustrationStyle": {
+      "lookAndFeel": "Hand-drawn or pastel-toned vector",
+      "characterDesign": "Inclusive, gender-neutral, friendly expressions",
+      "resources": ["Humaaans", "Open Peeps", "Blush"]
+    },
+    "iconography": {
+      "style": "Rounded line icons with soft shadows",
+      "examples": {
+        "wellness": "🌿",
+        "mindfulness": "🧘",
+        "chat": "💬"
+      }
+    }
+  },
+  "brandVoice": {
+    "tone": ["Empathetic", "Calming", "Non-judgmental"],
+    "examples": [
+      "We're here to listen, not to judge.",
+      "Take a deep breath, you’re in a safe space.",
+      "It's okay to not be okay. Let's talk."
+    ],
+    "avoid": ["Overly clinical terms", "Harsh or urgent commands"]
+  },
+  "motionAndInteraction": {
+    "transitions": ["Fade-ins", "Soft loading animations"],
+    "idleStates": ["Breathing animation"],
+    "microInteractions": ["Pulsing dot during AI response"]
+  },
+  "logoUsage": {
+    "variants": ["horizontal", "stacked", "monochrome"],
+    "safeArea": "Provide margin padding around all logo placements"
+  },
+  "accessibility": {
+    "contrastCompliance": "WCAG AA or AAA",
+    "fontScaling": true,
+    "screenReaderSupport": true,
+    "dyslexiaFriendlyMode": true,
+    "colorModeToggle": true
+  },
+  "deliverables": {
+    "logo": ["light", "dark", "horizontal", "stacked"],
+    "fonts": ["Header", "Body", "UI"],
+    "colors": "Palette and usage guidelines",
+    "components": ["Chat bubble", "Buttons", "Navbar", "Modals"],
+    "voiceGuide": true,
+    "illustrationPack": true,
+    "iconPack": true,
+    "figmaStyleGuide": true
+  }
+}
+
