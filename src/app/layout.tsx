@@ -29,6 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr">
       <head>
+        <link rel="icon" href="/favicon.png" />
         <link
           href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=IBM+Plex+Arabic:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"

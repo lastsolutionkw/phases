@@ -2,22 +2,27 @@ import { api } from './api';
 import { ChatMessage, ChatSession } from '@/types';
 
 export interface StartChatResponse {
-  id: number;
+  id: string;
   title?: string;
   created_at: string;
 }
 
 export interface SendMessageRequest {
-  session_id: number;
+  session_id: string;
   message: string;
 }
 
 export interface SendMessageResponse {
-  id: number;
-  content: string;
-  sender: 'ai' | 'user';
-  timestamp: string;
-  session_id: number;
+  user_message: {
+    id: string;
+    content: string;
+    timestamp: string;
+  };
+  ai_response: {
+    id: string;
+    content: string;
+    timestamp: string;
+  };
 }
 
 export interface ChatHistoryResponse {
@@ -65,7 +70,7 @@ export const chatService = {
 
   transformMessageToUI(apiMessage: any): ChatMessage {
     return {
-      id: apiMessage.id,
+      id: apiMessage.id.toString(),
       content: apiMessage.content,
       sender: apiMessage.sender,
       timestamp: new Date(apiMessage.timestamp),

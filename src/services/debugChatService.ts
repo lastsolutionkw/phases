@@ -63,11 +63,11 @@ export const debugChatService = {
     try {
       // Test start chat
       const startResponse = await this.testStartChat();
-      console.log('Chat started with session:', startResponse.session_id);
+      console.log('Chat started with session:', startResponse.id);
       
       // Test send message if we got a session
-      if (startResponse?.session_id) {
-        await this.testSendMessage(startResponse.session_id);
+      if (startResponse?.id) {
+        await this.testSendMessage(startResponse.id);
       }
       
       return true;

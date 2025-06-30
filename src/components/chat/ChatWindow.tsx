@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import MessageBubble from './MessageBubble';
 import TypingIndicator from './TypingIndicator';
 import SuggestedReplies from './SuggestedReplies';
@@ -15,15 +15,6 @@ interface ChatWindowProps {
 export default function ChatWindow({ className = '', onSendMessage }: ChatWindowProps) {
   const { t } = useLanguage();
   const { messages, isTyping, currentSession, startNewSession, sendMessage, error } = useChat();
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
 
   useEffect(() => {
     if (!currentSession) {
@@ -62,7 +53,6 @@ export default function ChatWindow({ className = '', onSendMessage }: ChatWindow
           <MessageBubble key={message.id} message={message} />
         ))}
         {isTyping && <TypingIndicator />}
-        <div ref={messagesEndRef} />
       </div>
 
       {/* Suggested Replies */}

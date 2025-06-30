@@ -91,7 +91,7 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
         'guest';
 
       const newSession: ChatSession = {
-        id: response.id.toString(),
+        id: response.id,
         userId,
         messages: [],
         startTime: new Date(response.created_at),
@@ -119,7 +119,7 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
           'guest';
 
         sessionToUse = {
-          id: response.id.toString(),
+          id: response.id,
           userId,
           messages: [],
           startTime: new Date(response.created_at),
@@ -147,17 +147,17 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
 
     try {
       const request: SendMessageRequest = {
-        session_id: parseInt(sessionToUse.id),
+        session_id: sessionToUse.id,
         message: content,
       };
 
       const response = await chatService.sendMessage(request);
 
       const aiMessage: ChatMessage = {
-        id: response.id.toString(),
-        content: response.content,
-        sender: response.sender,
-        timestamp: new Date(response.timestamp),
+        id: response.ai_response.id.toString(),
+        content: response.ai_response.content,
+        sender: 'ai',
+        timestamp: new Date(response.ai_response.timestamp),
       };
 
       dispatch({ type: 'ADD_MESSAGE', payload: aiMessage });
