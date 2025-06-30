@@ -1,17 +1,21 @@
+'use client';
+
 import Link from "next/link";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Home() {
+  const { t } = useLanguage();
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800">
       <div className="container mx-auto px-4 py-16">
         {/* Hero Section */}
         <section className="text-center mb-16">
           <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Welcome to <span className="text-blue-600">Phases</span>
+            {t('home.title', { brandName: t('common.brandName') })}
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-            Your empathetic AI companion for mental wellness. We're here to listen, 
-            support, and help you navigate life's challenges in a safe, judgment-free space.
+            {t('home.subtitle')}
           </p>
           
           {/* Start Chat CTA */}
@@ -20,13 +24,13 @@ export default function Home() {
               href="/chat"
               className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-colors shadow-lg"
             >
-              Start Conversation
+              {t('home.startChat')}
             </Link>
             <Link 
               href="/register"
               className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4 rounded-full font-semibold text-lg transition-colors"
             >
-              Create Account
+              {t('home.createAccount')}
             </Link>
           </div>
         </section>
@@ -34,7 +38,7 @@ export default function Home() {
         {/* Features Overview */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
-            How We Support You
+            {t('home.howWeSupport')}
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
@@ -42,10 +46,10 @@ export default function Home() {
                 <span className="text-2xl">💬</span>
               </div>
               <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
-                24/7 AI Support
+                {t('home.features.aiSupport.title')}
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
-                Always available when you need someone to talk to, with empathetic responses tailored to your emotions.
+                {t('home.features.aiSupport.description')}
               </p>
             </div>
             <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
@@ -53,10 +57,10 @@ export default function Home() {
                 <span className="text-2xl">🌱</span>
               </div>
               <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
-                Personal Growth
+                {t('home.features.personalGrowth.title')}
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
-                Track your mood, set goals, and access resources to support your mental wellness journey.
+                {t('home.features.personalGrowth.description')}
               </p>
             </div>
             <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
@@ -64,10 +68,10 @@ export default function Home() {
                 <span className="text-2xl">🔒</span>
               </div>
               <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
-                Safe & Private
+                {t('home.features.safePrivate.title')}
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
-                Your conversations are confidential. Use anonymously or create an account for personalized support.
+                {t('home.features.safePrivate.description')}
               </p>
             </div>
           </div>
@@ -76,20 +80,20 @@ export default function Home() {
         {/* Testimonials */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
-            What People Say
+            {t('home.testimonials.title')}
           </h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
               <p className="text-gray-600 dark:text-gray-300 mb-4 italic">
-                "Phases helped me during a difficult time. Having someone to talk to anytime made a real difference."
+                "{t('home.testimonials.testimonial1')}"
               </p>
-              <p className="font-semibold text-gray-900 dark:text-white">- Sarah M.</p>
+              <p className="font-semibold text-gray-900 dark:text-white">- {t('home.testimonials.author1')}</p>
             </div>
             <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
               <p className="text-gray-600 dark:text-gray-300 mb-4 italic">
-                "The mood tracking feature helped me understand my patterns better. It's like having a gentle therapist."
+                "{t('home.testimonials.testimonial2')}"
               </p>
-              <p className="font-semibold text-gray-900 dark:text-white">- Ahmed K.</p>
+              <p className="font-semibold text-gray-900 dark:text-white">- {t('home.testimonials.author2')}</p>
             </div>
           </div>
         </section>
@@ -102,28 +106,28 @@ export default function Home() {
               className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow"
             >
               <span className="text-2xl mb-2 block">📚</span>
-              <span className="text-sm font-medium text-gray-900 dark:text-white">Resources</span>
+              <span className="text-sm font-medium text-gray-900 dark:text-white">{t('home.quickAccess.resources')}</span>
             </Link>
             <Link 
               href="/dashboard" 
               className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow"
             >
               <span className="text-2xl mb-2 block">📊</span>
-              <span className="text-sm font-medium text-gray-900 dark:text-white">Dashboard</span>
+              <span className="text-sm font-medium text-gray-900 dark:text-white">{t('home.quickAccess.dashboard')}</span>
             </Link>
             <Link 
               href="/emergency" 
               className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow"
             >
               <span className="text-2xl mb-2 block">🆘</span>
-              <span className="text-sm font-medium text-gray-900 dark:text-white">Emergency</span>
+              <span className="text-sm font-medium text-gray-900 dark:text-white">{t('home.quickAccess.emergency')}</span>
             </Link>
             <Link 
               href="/about" 
               className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow"
             >
               <span className="text-2xl mb-2 block">ℹ️</span>
-              <span className="text-sm font-medium text-gray-900 dark:text-white">About</span>
+              <span className="text-sm font-medium text-gray-900 dark:text-white">{t('home.quickAccess.about')}</span>
             </Link>
           </div>
         </section>

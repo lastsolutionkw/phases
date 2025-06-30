@@ -1,3 +1,5 @@
+'use client';
+
 interface ResourceCardProps {
   title: string;
   type: 'article' | 'meditation' | 'exercise' | 'video';

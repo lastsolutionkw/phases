@@ -1,0 +1,140 @@
+openapi: 3.0.3
+info:
+  title: AI Mental Health Support API
+  version: 1.0.0
+  description: OpenAPI specification for the AI-powered mental and psychological support
+    chatbot web application.
+servers:
+- url: https://api.example.com/v1
+components:
+  securitySchemes:
+    JWT:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        detail:
+          type: string
+        code:
+          type: string
+      example:
+        detail: Invalid token.
+        code: authentication_failed
+security:
+- JWT: []
+paths:
+  /auth/register/:
+    post:
+      summary: Register new user
+      tags:
+      - Auth
+  /auth/login/:
+    post:
+      summary: User login
+      tags:
+      - Auth
+  /auth/token/refresh/:
+    post:
+      summary: Refresh access token
+      tags:
+      - Auth
+  /auth/profile/:
+    get:
+      summary: Get user profile
+      tags:
+      - Auth
+    put:
+      summary: Update user profile
+      tags:
+      - Auth
+  /chat/start/:
+    post:
+      summary: Start new chat session
+      tags:
+      - Chat
+  /chat/message/:
+    post:
+      summary: Send message and get AI reply
+      tags:
+      - Chat
+  /chat/history/:
+    get:
+      summary: Get past chat session summaries
+      tags:
+      - Chat
+  /chat/session/{id}/:
+    get:
+      summary: Get full chat session
+      tags:
+      - Chat
+    delete:
+      summary: Delete chat session
+      tags:
+      - Chat
+  /mood/log/:
+    post:
+      summary: Log current mood
+      tags:
+      - Mood
+  /mood/history/:
+    get:
+      summary: Retrieve mood history
+      tags:
+      - Mood
+  /mood/stats/:
+    get:
+      summary: Mood statistics and analytics
+      tags:
+      - Mood
+  /goals/:
+    get:
+      summary: Get current goals
+      tags:
+      - Goals
+    post:
+      summary: Set or update goals
+      tags:
+      - Goals
+  /goals/progress/:
+    get:
+      summary: Get goal progress
+      tags:
+      - Goals
+  /resources/:
+    get:
+      summary: List mental health resources
+      tags:
+      - Resources
+  /resources/{id}/:
+    get:
+      summary: Resource detail
+      tags:
+      - Resources
+  /resources/categories/:
+    get:
+      summary: List resource categories
+      tags:
+      - Resources
+  /resources/search/:
+    get:
+      summary: Search resources
+      tags:
+      - Resources
+  /emergency/:
+    get:
+      summary: List emergency contacts
+      tags:
+      - Emergency
+  /emergency/my-region/:
+    get:
+      summary: Emergency contacts based on user region
+      tags:
+      - Emergency
+  /emergency/flag/:
+    post:
+      summary: Flag critical mental health case
+      tags:
+      - Emergency

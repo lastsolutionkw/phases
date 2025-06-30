@@ -1,0 +1,518 @@
+{
+  "nav": {
+    "home": "Home",
+    "chat": "Chat",
+    "dashboard": "Dashboard", 
+    "resources": "Resources",
+    "emergency": "Emergency",
+    "login": "Sign In",
+    "register": "Get Started",
+    "about": "About",
+    "privacy": "Privacy"
+  },
+  "home": {
+    "title": "Welcome to {{brandName}}",
+    "subtitle": "Your empathetic AI companion for mental wellness. We're here to listen, support, and help you navigate life's challenges in a safe, judgment-free space.",
+    "startChat": "Start Conversation",
+    "createAccount": "Create Account",
+    "howWeSupport": "How We Support You",
+    "features": {
+      "aiSupport": {
+        "title": "24/7 AI Support",
+        "description": "Always available when you need someone to talk to, with empathetic responses tailored to your emotions."
+      },
+      "personalGrowth": {
+        "title": "Personal Growth", 
+        "description": "Track your mood, set goals, and access resources to support your mental wellness journey."
+      },
+      "safePrivate": {
+        "title": "Safe & Private",
+        "description": "Your conversations are confidential. Use anonymously or create an account for personalized support."
+      }
+    },
+    "testimonials": {
+      "title": "What People Say",
+      "testimonial1": "Phases helped me during a difficult time. Having someone to talk to anytime made a real difference.",
+      "testimonial2": "The mood tracking feature helped me understand my patterns better. It's like having a gentle therapist.",
+      "author1": "Sarah M.",
+      "author2": "Ahmed K."
+    },
+    "quickAccess": {
+      "resources": "Resources",
+      "dashboard": "Dashboard", 
+      "emergency": "Emergency",
+      "about": "About"
+    }
+  },
+  "chat": {
+    "title": "Chat with your AI companion",
+    "subtitle": "Share what's on your mind in a safe, judgment-free space",
+    "placeholder": "Share what's on your mind...",
+    "aiTyping": "AI is typing",
+    "sendHint": "Press Enter to send, Shift+Enter for new line",
+    "characterLimit": "{{current}}/{{max}}",
+    "emergencyNotice": "If you're in crisis: This AI cannot replace professional help.",
+    "getSupport": "Get immediate support here",
+    "suggestedReplies": {
+      "label": "Quick responses:",
+      "overwhelmed": "I'm feeling overwhelmed",
+      "talkDay": "I'd like to talk about my day", 
+      "anxiety": "I'm struggling with anxiety",
+      "needListener": "I need someone to listen"
+    },
+    "greeting": "Hello! I'm here to listen and support you. How are you feeling today?"
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome Back",
+      "subtitle": "Sign in to continue your wellness journey",
+      "email": "Email",
+      "password": "Password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot password?",
+      "signIn": "Sign In",
+      "signingIn": "Signing in...",
+      "orContinueWith": "Or continue with",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up"
+    },
+    "register": {
+      "title": "Create Your Account",
+      "subtitle": "Join our supportive community today",
+      "fullName": "Full Name",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "goals": {
+        "title": "What would you like to work on? (Optional)",
+        "manageAnxiety": "Manage anxiety",
+        "improveMood": "Improve mood", 
+        "betterSleep": "Better sleep",
+        "stressManagement": "Stress management",
+        "buildConfidence": "Build confidence",
+        "copingSkills": "Develop coping skills"
+      },
+      "termsAgree": "I agree to the",
+      "termsLink": "Terms of Service and Privacy Policy",
+      "createAccount": "Create Account",
+      "creatingAccount": "Creating account...",
+      "orSignUpWith": "Or sign up with",
+      "haveAccount": "Already have an account?",
+      "signIn": "Sign in"
+    },
+    "guestCard": {
+      "title": "Try Without Signing Up",
+      "description": "Start a conversation immediately with complete anonymity. No personal information required.",
+      "continueGuest": "Continue as Guest",
+      "features": {
+        "anonymous": "Anonymous",
+        "instantAccess": "Instant Access", 
+        "noDataStored": "No Data Stored"
+      }
+    },
+    "social": {
+      "google": "Google",
+      "apple": "Apple"
+    }
+  },
+  "dashboard": {
+    "title": "Your Wellness Dashboard",
+    "subtitle": "Track your progress and continue your mental wellness journey",
+    "quickActions": {
+      "title": "Quick Actions",
+      "newSession": "Start New Conversation",
+      "sessionSubtitle": "Your AI companion is ready to listen",
+      "logMood": "Log Your Mood",
+      "browseResources": "Browse Resources"
+    },
+    "recentConversations": {
+      "title": "Recent Conversations",
+      "startNew": "Start New Session",
+      "mood": "Mood:",
+      "topics": "Topics:",
+      "stats": {
+        "totalSessions": "Total Sessions",
+        "totalTime": "Total Time", 
+        "avgSession": "Avg Session"
+      }
+    },
+    "moodTracker": {
+      "title": "Mood Trends",
+      "averageMood": "Average Mood",
+      "sevenDays": "7 Days",
+      "thirtyDays": "30 Days",
+      "poor": "Poor",
+      "great": "Great",
+      "todayQuestion": "How are you feeling today?"
+    },
+    "goals": {
+      "title": "Your Goals",
+      "addNew": "Add New Goal",
+      "progress": "Progress",
+      "target": "Target:",
+      "daysLeft": "{{days}} days left",
+      "completed": "Completed! 🎉",
+      "insights": {
+        "title": "Goal Insights",
+        "completed": "You've completed {{completed}} out of {{total}} goals this month",
+        "onTrack": "Your meditation goal is on track - keep it up!",
+        "suggestion": "Consider breaking down larger goals into smaller steps"
+      }
+    },
+    "personalInsights": {
+      "title": "Personal Insights",
+      "weekProgress": {
+        "title": "This Week's Progress",
+        "content": "You've had {{sessions}} meaningful conversations and your mood has been stable. Keep up the great work!"
+      },
+      "recommendation": {
+        "title": "Recommended Activity", 
+        "content": "Try the \"5-minute breathing exercise\" in your resources to maintain your positive momentum."
+      }
+    }
+  },
+  "resources": {
+    "title": "Wellness Resources",
+    "subtitle": "Discover articles, meditations, and exercises to support your mental health",
+    "search": {
+      "placeholder": "Search articles, meditations, exercises...",
+      "quickSearch": "Quick search:",
+      "suggestions": ["anxiety", "sleep", "meditation", "stress", "depression"]
+    },
+    "filters": {
+      "title": "Filters",
+      "clearAll": "Clear All",
+      "type": "Type",
+      "categories": "Categories",
+      "duration": "Duration",
+      "types": {
+        "article": "Articles",
+        "meditation": "Meditations", 
+        "exercise": "Exercises",
+        "video": "Videos"
+      },
+      "durations": {
+        "all": "Any Duration",
+        "short": "5 min or less",
+        "medium": "5-15 min",
+        "long": "15+ min"
+      },
+      "activeFilters": "Active Filters"
+    },
+    "featured": "Featured This Week",
+    "allResources": "All Resources",
+    "loadMore": "Load More Resources",
+    "actions": {
+      "read": "Read",
+      "watch": "Watch", 
+      "start": "Start"
+    },
+    "categories": {
+      "anxiety": "Anxiety",
+      "depression": "Depression",
+      "stress": "Stress", 
+      "sleep": "Sleep",
+      "mindfulness": "Mindfulness",
+      "relaxation": "Relaxation",
+      "selfCare": "Self-Care",
+      "relationships": "Relationships",
+      "workLife": "Work-Life Balance"
+    }
+  },
+  "emergency": {
+    "title": "Need Immediate Help?",
+    "subtitle": "If you're in crisis or having thoughts of self-harm, please reach out for professional help immediately.",
+    "quickActions": {
+      "emergency": {
+        "title": "Emergency Services",
+        "number": "911",
+        "description": "For immediate life-threatening emergencies"
+      },
+      "suicide": {
+        "title": "Suicide Prevention", 
+        "number": "988",
+        "description": "24/7 suicide prevention hotline"
+      },
+      "crisis": {
+        "title": "Crisis Text Line",
+        "number": "Text HOME to 741741", 
+        "description": "Free, 24/7 crisis text support"
+      }
+    },
+    "cards": {
+      "immediateDanger": {
+        "title": "If You're in Immediate Danger",
+        "steps": [
+          "Call 911 or go to your nearest emergency room",
+          "Contact a trusted friend or family member", 
+          "Remove any means of self-harm from your area",
+          "Stay with someone until help arrives"
+        ]
+      },
+      "difficultThoughts": {
+        "title": "If You're Having Difficult Thoughts",
+        "steps": [
+          "Call or text a crisis hotline",
+          "Reach out to a mental health professional",
+          "Contact a trusted friend or family member", 
+          "Use grounding techniques to stay present"
+        ]
+      }
+    },
+    "internationalHotlines": "Crisis Support by Country",
+    "additionalResources": {
+      "title": "Additional Support Resources",
+      "onlineCommunities": {
+        "title": "Online Support Communities",
+        "items": [
+          "7 Cups - Free emotional support",
+          "Crisis Text Line - Text-based crisis support",
+          "NAMI Support Groups - Find local support"
+        ]
+      },
+      "professionalHelp": {
+        "title": "Professional Help",
+        "items": [
+          "Psychology Today - Find therapists",
+          "BetterHelp - Online therapy platform",
+          "Local mental health services"
+        ]
+      }
+    },
+    "disclaimer": "This AI companion is not a replacement for professional mental health care. If you're experiencing a mental health crisis, please contact the appropriate emergency services or mental health professionals in your area."
+  },
+  "about": {
+    "title": "About {{brandName}}",
+    "subtitle": "Understanding our mission to support mental wellness",
+    "vision": {
+      "title": "Our Vision",
+      "content": "We envision a world where mental health support is accessible to everyone, regardless of location, time, or circumstances. {{brandName}} represents our commitment to breaking down barriers that prevent people from seeking help when they need it most."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "empathetic": {
+        "title": "Empathetic Support",
+        "content": "Provide compassionate, non-judgmental support through AI technology that understands and responds to emotional needs with care and sensitivity."
+      },
+      "accessible": {
+        "title": "Accessible Care", 
+        "content": "Make mental health support available 24/7, removing geographical, financial, and social barriers that often prevent people from getting help."
+      },
+      "safe": {
+        "title": "Safe Environment",
+        "content": "Create a secure, private space where individuals can express themselves freely without fear of judgment or breach of confidentiality."
+      },
+      "complement": {
+        "title": "Complement Professional Care",
+        "content": "Bridge the gap between professional therapy sessions and daily life, providing ongoing support that complements traditional mental health care."
+      }
+    },
+    "howItWorks": {
+      "title": "How {{brandName}} Works",
+      "step1": {
+        "title": "Start a Conversation",
+        "content": "Begin chatting immediately - no signup required. Share what's on your mind in a judgment-free environment."
+      },
+      "step2": {
+        "title": "Receive Empathetic Support", 
+        "content": "Our AI analyzes your emotional state and responds with appropriate empathy, validation, and helpful suggestions."
+      },
+      "step3": {
+        "title": "Access Resources & Track Progress",
+        "content": "Get personalized resource recommendations and optionally track your mood and goals over time with an account."
+      }
+    },
+    "limitations": {
+      "title": "Important: AI Limitations & Disclaimer",
+      "canDo": {
+        "title": "What {{brandName}} Can Do",
+        "items": [
+          "Provide empathetic listening and emotional support",
+          "Offer coping strategies and mindfulness techniques", 
+          "Share educational resources about mental health",
+          "Help you reflect on your thoughts and feelings",
+          "Suggest when professional help might be beneficial"
+        ]
+      },
+      "cannotDo": {
+        "title": "What {{brandName}} Cannot Do",
+        "items": [
+          "Provide professional medical or psychological diagnosis",
+          "Replace therapy or professional mental health treatment",
+          "Handle emergency situations or crisis intervention",
+          "Prescribe medications or provide medical advice", 
+          "Guarantee specific outcomes or treatment success"
+        ]
+      },
+      "crisis": "If you're experiencing a mental health crisis or having thoughts of self-harm, please seek immediate professional help or contact emergency services."
+    },
+    "values": {
+      "title": "Our Values",
+      "empathy": {
+        "title": "Empathy First",
+        "description": "Every interaction is guided by genuine care and understanding"
+      },
+      "privacy": {
+        "title": "Privacy & Safety",
+        "description": "Your privacy and emotional safety are our highest priorities"
+      },
+      "accessibility": {
+        "title": "Accessibility", 
+        "description": "Mental health support should be available to everyone, everywhere"
+      },
+      "collaboration": {
+        "title": "Collaboration",
+        "description": "We work alongside, not in place of, professional mental health care"
+      }
+    },
+    "contact": {
+      "title": "Get in Touch",
+      "description": "Have questions, feedback, or want to learn more about {{brandName}}? We'd love to hear from you.",
+      "general": "General Inquiries",
+      "privacy": "Privacy & Safety"
+    }
+  },
+  "privacy": {
+    "title": "Privacy & Safety",
+    "subtitle": "Your privacy and safety are our top priorities",
+    "anonymity": {
+      "title": "Complete Anonymity Option",
+      "subtitle": "Use Without Creating an Account",
+      "description": "You can use {{brandName}} completely anonymously without creating an account. No personal information is required to start a conversation.",
+      "features": [
+        "No registration required for basic chat functionality",
+        "Conversations are not linked to your identity",
+        "No tracking of personal information",
+        "You control what information you share"
+      ]
+    },
+    "dataUsage": {
+      "title": "How We Use Your Data",
+      "anonymous": {
+        "title": "Anonymous Users",
+        "items": [
+          "Conversations are processed for AI responses only",
+          "No data is permanently stored", 
+          "No personal identifiers are collected",
+          "Session data is cleared after you leave"
+        ]
+      },
+      "registered": {
+        "title": "Registered Users",
+        "items": [
+          "Chat history saved for continuity",
+          "Mood tracking data for personal insights",
+          "Progress tracking for goals",
+          "You can delete your data anytime"
+        ]
+      }
+    },
+    "protection": {
+      "title": "Data Protection Measures",
+      "encryption": {
+        "title": "End-to-End Encryption",
+        "description": "All conversations are encrypted in transit"
+      },
+      "storage": {
+        "title": "Secure Storage",
+        "description": "Data stored with industry-standard security"
+      },
+      "deletion": {
+        "title": "Data Deletion", 
+        "description": "Delete your data completely anytime"
+      }
+    },
+    "rights": {
+      "title": "Your Privacy Rights",
+      "anonymity": "Use our service without providing any personal information",
+      "access": "View all data we have about you",
+      "deletion": "Delete your account and all associated data",
+      "portability": "Export your data in a readable format",
+      "correction": "Update or correct your personal information"
+    },
+    "aiSafety": {
+      "title": "AI Safety & Limitations", 
+      "disclaimer": "Important Disclaimer",
+      "limitations": [
+        "This AI is not a licensed therapist or medical professional",
+        "AI responses are generated based on patterns, not professional judgment",
+        "Cannot diagnose mental health conditions or provide medical advice", 
+        "Not suitable for emergency situations or crisis intervention",
+        "Should complement, not replace, professional mental health care"
+      ]
+    },
+    "contact": {
+      "title": "Questions About Privacy?",
+      "description": "If you have any questions about our privacy practices or want to exercise your privacy rights, please contact us:",
+      "email": "Email: privacy@phases.com",
+      "phone": "Phone: +1 (555) 123-4567",
+      "address": "Address: 123 Privacy Lane, Safety City, SC 12345"
+    }
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "It looks like you've wandered into uncharted territory. Don't worry, we're here to guide you back to safety.",
+    "whereToGo": "Where would you like to go?",
+    "goHome": "Go Home",
+    "startChat": "Start a Chat", 
+    "browseResources": "Browse Resources",
+    "needSupport": "You can always start a conversation with our AI companion - no account needed, completely private.",
+    "error": "Error 404 • Page not found"
+  },
+  "footer": {
+    "description": "Your empathetic AI companion for mental wellness. Available 24/7 to provide support, resources, and a safe space to talk.",
+    "product": "Product",
+    "company": "Company", 
+    "legal": "Legal",
+    "links": {
+      "chat": "Chat",
+      "resources": "Resources",
+      "dashboard": "Dashboard",
+      "emergency": "Emergency Support",
+      "about": "About",
+      "privacy": "Privacy & Safety", 
+      "contact": "Contact",
+      "help": "Help Center",
+      "terms": "Terms of Service",
+      "privacyPolicy": "Privacy Policy",
+      "cookies": "Cookie Policy",
+      "accessibility": "Accessibility"
+    },
+    "copyright": "© 2024 {{brandName}}. All rights reserved.",
+    "language": "English",
+    "theme": "Theme",
+    "disclaimer": "If you're experiencing a mental health crisis, please contact emergency services or call a crisis hotline immediately. This AI is not a replacement for professional mental health care."
+  },
+  "common": {
+    "brandName": "Phases",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "clear": "Clear",
+    "select": "Select",
+    "selectAll": "Select All",
+    "none": "None",
+    "all": "All",
+    "yes": "Yes",
+    "no": "No",
+    "ok": "OK",
+    "submit": "Submit",
+    "reset": "Reset",
+    "refresh": "Refresh",
+    "retry": "Retry",
+    "continue": "Continue",
+    "skipToContent": "Skip to content"
+  }
+}

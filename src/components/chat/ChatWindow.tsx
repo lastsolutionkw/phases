@@ -5,16 +5,19 @@ import MessageBubble from './MessageBubble';
 import TypingIndicator from './TypingIndicator';
 import SuggestedReplies from './SuggestedReplies';
 import { ChatMessage } from '@/types';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface ChatWindowProps {
   className?: string;
 }
 
 export default function ChatWindow({ className = '' }: ChatWindowProps) {
+  const { t } = useLanguage();
+  
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: '1',
-      content: "Hello! I'm here to listen and support you. How are you feeling today?",
+      content: t('chat.greeting'),
       sender: 'ai',
       timestamp: new Date(),
     }
@@ -31,10 +34,10 @@ export default function ChatWindow({ className = '' }: ChatWindowProps) {
   }, [messages]);
 
   const suggestedReplies = [
-    "I'm feeling overwhelmed",
-    "I'd like to talk about my day",
-    "I'm struggling with anxiety",
-    "I need someone to listen"
+    t('chat.suggestedReplies.overwhelmed'),
+    t('chat.suggestedReplies.talkDay'),
+    t('chat.suggestedReplies.anxiety'),
+    t('chat.suggestedReplies.needListener')
   ];
 
   return (

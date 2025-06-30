@@ -1,3 +1,5 @@
+'use client';
+
 interface QuickContactButtonProps {
   type: 'emergency' | 'suicide' | 'crisis';
   title: string;

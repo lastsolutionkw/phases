@@ -1,3 +1,5 @@
+'use client';
+
 export default function SocialLoginButtons() {
   const handleSocialLogin = (provider: string) => {
     console.log(`Login with ${provider}`);

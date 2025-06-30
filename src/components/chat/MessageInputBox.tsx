@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface MessageInputBoxProps {
   onSendMessage?: (message: string) => void;
@@ -8,6 +9,7 @@ interface MessageInputBoxProps {
 }
 
 export default function MessageInputBox({ onSendMessage, disabled = false }: MessageInputBoxProps) {
+  const { t } = useLanguage();
   const [message, setMessage] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -27,13 +29,13 @@ export default function MessageInputBox({ onSendMessage, disabled = false }: Mes
 
   return (
     <div className="border-t border-gray-200 dark:border-gray-700 p-4">
-      <form onSubmit={handleSubmit} className="flex items-end space-x-3">
+      <form onSubmit={handleSubmit} className="flex items-end space-x-3 rtl:space-x-reverse">
         <div className="flex-1">
           <textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyPress={handleKeyPress}
-            placeholder="Share what's on your mind..."
+            placeholder={t('chat.placeholder')}
             className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
             rows={1}
             style={{ minHeight: '44px', maxHeight: '120px' }}
@@ -62,8 +64,8 @@ export default function MessageInputBox({ onSendMessage, disabled = false }: Mes
       </form>
       
       <div className="flex justify-between items-center mt-2 text-xs text-gray-500 dark:text-gray-400">
-        <span>Press Enter to send, Shift+Enter for new line</span>
-        <span>{message.length}/1000</span>
+        <span>{t('chat.sendHint')}</span>
+        <span>{t('chat.characterLimit', { current: message.length, max: 1000 })}</span>
       </div>
     </div>
   );

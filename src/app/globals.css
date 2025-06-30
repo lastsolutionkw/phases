@@ -24,3 +24,114 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* RTL Support */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] body {
+  font-family: 'Cairo', 'IBM Plex Arabic', Arial, sans-serif;
+}
+
+/* RTL-specific utilities */
+.rtl\:text-right {
+  text-align: right;
+}
+
+.rtl\:text-left {
+  text-align: left;
+}
+
+.rtl\:ml-auto {
+  margin-left: auto;
+}
+
+.rtl\:mr-auto {
+  margin-right: auto;
+}
+
+/* Direction-aware spacing */
+[dir="rtl"] .space-x-2 > :not([hidden]) ~ :not([hidden]) {
+  margin-right: 0.5rem;
+  margin-left: 0;
+}
+
+[dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]) {
+  margin-right: 0.75rem;
+  margin-left: 0;
+}
+
+[dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  margin-right: 1rem;
+  margin-left: 0;
+}
+
+[dir="rtl"] .space-x-6 > :not([hidden]) ~ :not([hidden]) {
+  margin-right: 1.5rem;
+  margin-left: 0;
+}
+
+[dir="rtl"] .space-x-8 > :not([hidden]) ~ :not([hidden]) {
+  margin-right: 2rem;
+  margin-left: 0;
+}
+
+/* RTL Flexbox direction fixes */
+[dir="rtl"] .flex-row {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .justify-start {
+  justify-content: flex-end;
+}
+
+[dir="rtl"] .justify-end {
+  justify-content: flex-start;
+}
+
+/* Arabic typography improvements */
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 600;
+}
+
+[dir="rtl"] p, [dir="rtl"] span, [dir="rtl"] div {
+  font-family: 'IBM Plex Arabic', sans-serif;
+  line-height: 1.7;
+}
+
+/* Form inputs RTL support */
+[dir="rtl"] input, [dir="rtl"] textarea, [dir="rtl"] select {
+  text-align: right;
+}
+
+[dir="rtl"] input::placeholder, [dir="rtl"] textarea::placeholder {
+  text-align: right;
+}
+
+/* Chat bubble RTL support */
+[dir="rtl"] .chat-bubble-user {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+[dir="rtl"] .chat-bubble-ai {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+/* Navigation RTL support */
+[dir="rtl"] .nav-menu {
+  right: auto;
+  left: 0;
+}
+
+/* Shadow adjustments for RTL */
+[dir="rtl"] .shadow-lg {
+  box-shadow: -10px 10px 25px -3px rgba(0, 0, 0, 0.1), -4px 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+[dir="rtl"] .shadow-md {
+  box-shadow: -4px 4px 6px -1px rgba(0, 0, 0, 0.1), -2px 2px 4px -1px rgba(0, 0, 0, 0.06);
+}

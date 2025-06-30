@@ -1,3 +1,5 @@
+'use client';
+
 import { EmergencyContact } from '@/types';
 
 export default function CountryHotlineList() {
@@ -167,7 +169,7 @@ export default function CountryHotlineList() {
       <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg text-center">
         <p className="text-blue-800 dark:text-blue-200 text-sm">
           Don't see your country? Contact us to add local emergency resources, or search online for 
-          "{'"your country"} suicide prevention hotline" or "{'"your country"} mental health crisis line".
+          &quot;your country suicide prevention hotline&quot; or &quot;your country mental health crisis line&quot;.
         </p>
       </div>
     </div>
