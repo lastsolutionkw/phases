@@ -28,6 +28,13 @@ export default function ChatHistory({ onSelectSession, className = '' }: ChatHis
       const response = await chatService.getChatHistory();
       setHistory(response.sessions);
     } catch (error) {
+      console.group('🚨 CHAT HISTORY ERROR - Load History');
+      console.error('❌ Failed to load chat history:', error);
+      console.error('📝 Context:', {
+        timestamp: new Date().toISOString(),
+        currentUrl: window.location.href
+      });
+      console.groupEnd();
       setError(error instanceof Error ? error.message : 'Failed to load chat history');
     } finally {
       setIsLoading(false);
@@ -39,7 +46,14 @@ export default function ChatHistory({ onSelectSession, className = '' }: ChatHis
       await loadSession(sessionId);
       onSelectSession?.(sessionId);
     } catch (error) {
-      console.error('Failed to load session:', error);
+      console.group('🚨 CHAT HISTORY ERROR - Load Session');
+      console.error('❌ Failed to load session:', error);
+      console.error('📝 Context:', {
+        timestamp: new Date().toISOString(),
+        sessionId: sessionId,
+        currentUrl: window.location.href
+      });
+      console.groupEnd();
     }
   };
 
@@ -54,7 +68,14 @@ export default function ChatHistory({ onSelectSession, className = '' }: ChatHis
       await chatService.deleteChatSession(sessionId);
       setHistory(prev => prev.filter(session => session.id !== sessionId));
     } catch (error) {
-      console.error('Failed to delete session:', error);
+      console.group('🚨 CHAT HISTORY ERROR - Delete Session');
+      console.error('❌ Failed to delete session:', error);
+      console.error('📝 Context:', {
+        timestamp: new Date().toISOString(),
+        sessionId: sessionId,
+        currentUrl: window.location.href
+      });
+      console.groupEnd();
     }
   };
 

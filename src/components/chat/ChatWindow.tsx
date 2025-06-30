@@ -6,6 +6,7 @@ import TypingIndicator from './TypingIndicator';
 import SuggestedReplies from './SuggestedReplies';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useChat } from '@/contexts/ChatContext';
+import { logger } from '@/utils/logger';
 
 interface ChatWindowProps {
   className?: string;
@@ -18,7 +19,13 @@ export default function ChatWindow({ className = '', onSendMessage }: ChatWindow
 
   useEffect(() => {
     if (!currentSession) {
-      startNewSession().catch(console.error);
+      logger.chatEvent('auto-starting new session', { component: 'ChatWindow' });
+      startNewSession().catch((error) => {
+        logger.error('Failed to auto-start session in ChatWindow', error, {
+          component: 'ChatWindow',
+          action: 'auto-start'
+        });
+      });
     }
   }, [currentSession, startNewSession]);
 
@@ -31,10 +38,21 @@ export default function ChatWindow({ className = '', onSendMessage }: ChatWindow
 
   const handleSuggestionSelect = async (suggestion: string) => {
     try {
+      logger.userAction('selected suggestion', {
+        component: 'ChatWindow',
+        suggestion: suggestion.substring(0, 50)
+      });
       await sendMessage(suggestion);
       onSendMessage?.(suggestion);
+      logger.success('Suggestion sent successfully', {
+        component: 'ChatWindow',
+        messageLength: suggestion.length
+      });
     } catch (error) {
-      console.error('Failed to send suggestion:', error);
+      logger.error('Failed to send suggestion from ChatWindow', error, {
+        component: 'ChatWindow',
+        suggestion: suggestion.substring(0, 50)
+      });
     }
   };
 

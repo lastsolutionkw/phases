@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { logger } from '@/utils/logger';
 
 export default function LoginForm() {
   const [email, setEmail] = useState('');
@@ -12,11 +13,33 @@ export default function LoginForm() {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    logger.authEvent('login attempt started', {
+      component: 'LoginForm',
+      email: email.substring(0, 3) + '***'
+    });
     
-    console.log('Login attempt:', { email, password });
-    setIsLoading(false);
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // TODO: Replace with actual API call
+      logger.warn('Login form using mock implementation', {
+        component: 'LoginForm',
+        action: 'mock-login'
+      });
+      
+      logger.success('Mock login completed', {
+        component: 'LoginForm',
+        email: email.substring(0, 3) + '***'
+      });
+    } catch (error) {
+      logger.error('Login failed', error, {
+        component: 'LoginForm',
+        email: email.substring(0, 3) + '***'
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

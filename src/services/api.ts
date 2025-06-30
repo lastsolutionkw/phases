@@ -1,7 +1,13 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000/api/v1';
 
 export class ApiError extends Error {
-  constructor(public status: number, message: string, public code?: string) {
+  constructor(
+    public status: number, 
+    message: string, 
+    public code?: string, 
+    public response?: any,
+    public requestDetails?: any
+  ) {
     super(message);
     this.name = 'ApiError';
   }
@@ -49,19 +55,43 @@ async function fetchWithAuth(endpoint: string, options: RequestInit = {}, retryC
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
     
-    // Enhanced error logging for debugging
-    console.error('API Error:', {
-      url: `${API_BASE_URL}${endpoint}`,
+    // Enhanced error logging with backend error details
+    const errorDetails = {
+      timestamp: new Date().toISOString(),
+      endpoint: `${API_BASE_URL}${endpoint}`,
+      method: options.method || 'GET',
       status: response.status,
       statusText: response.statusText,
-      errorData,
-      requestOptions: options
+      headers: Object.fromEntries(response.headers.entries()),
+      requestBody: options.body,
+      backendError: errorData,
+      userAgent: navigator.userAgent,
+      currentUrl: window.location.href
+    };
+    
+    console.group(`🚨 API ERROR [${response.status}] - ${endpoint}`);
+    console.error('❌ Request Failed:', errorDetails.endpoint);
+    console.error('📊 Status:', `${errorDetails.status} ${errorDetails.statusText}`);
+    console.error('🔍 Backend Error:', errorDetails.backendError);
+    console.error('📤 Request Details:', {
+      method: errorDetails.method,
+      body: errorDetails.requestBody,
+      headers: options.headers
     });
+    console.error('🌐 Response Headers:', errorDetails.headers);
+    console.error('📍 Context:', {
+      timestamp: errorDetails.timestamp,
+      currentUrl: errorDetails.currentUrl,
+      userAgent: errorDetails.userAgent
+    });
+    console.groupEnd();
     
     throw new ApiError(
       response.status,
       errorData.detail || errorData.message || `HTTP ${response.status}: ${response.statusText}`,
-      errorData.code
+      errorData.code,
+      errorData,
+      errorDetails
     );
   }
 

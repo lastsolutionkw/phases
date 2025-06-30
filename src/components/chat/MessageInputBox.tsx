@@ -27,7 +27,15 @@ export default function MessageInputBox({ onSendMessage, disabled = false }: Mes
         onSendMessage?.(messageToSend);
       } catch (error) {
         setMessage(messageToSend);
-        console.error('Failed to send message:', error);
+        console.group('🚨 MESSAGE INPUT ERROR');
+        console.error('❌ Failed to send message from input box:', error);
+        console.error('📝 Message details:', {
+          timestamp: new Date().toISOString(),
+          messageLength: messageToSend.length,
+          messagePreview: messageToSend.substring(0, 50) + (messageToSend.length > 50 ? '...' : ''),
+          currentUrl: window.location.href
+        });
+        console.groupEnd();
       }
     }
   };

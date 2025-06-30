@@ -99,6 +99,14 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
       
       dispatch({ type: 'START_SESSION', payload: newSession });
     } catch (error) {
+      console.group('🚨 CHAT ERROR - Start Session');
+      console.error('❌ Error starting new chat session:', error);
+      console.error('📍 Context:', {
+        timestamp: new Date().toISOString(),
+        userId: authService.isAuthenticated() ? 'authenticated' : 'guest',
+        currentUrl: window.location.href
+      });
+      console.groupEnd();
       dispatch({ type: 'SET_ERROR', payload: error instanceof Error ? error.message : 'Failed to start chat' });
     } finally {
       dispatch({ type: 'SET_LOADING', payload: false });
@@ -127,6 +135,14 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
         
         dispatch({ type: 'START_SESSION', payload: sessionToUse });
       } catch (error) {
+        console.group('🚨 CHAT ERROR - Auto-Start Session');
+        console.error('❌ Error auto-starting chat session:', error);
+        console.error('📍 Context:', {
+          timestamp: new Date().toISOString(),
+          messageContent: content,
+          userId: authService.isAuthenticated() ? 'authenticated' : 'guest'
+        });
+        console.groupEnd();
         dispatch({ type: 'SET_ERROR', payload: error instanceof Error ? error.message : 'Failed to start chat session' });
         return;
       } finally {
@@ -162,6 +178,16 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
 
       dispatch({ type: 'ADD_MESSAGE', payload: aiMessage });
     } catch (error) {
+      console.group('🚨 CHAT ERROR - Send Message');
+      console.error('❌ Error sending message:', error);
+      console.error('📍 Context:', {
+        timestamp: new Date().toISOString(),
+        sessionId: sessionToUse?.id,
+        messageContent: content,
+        messageLength: content.length,
+        userId: authService.isAuthenticated() ? 'authenticated' : 'guest'
+      });
+      console.groupEnd();
       dispatch({ type: 'SET_ERROR', payload: error instanceof Error ? error.message : 'Failed to send message' });
     } finally {
       dispatch({ type: 'SET_TYPING', payload: false });
@@ -178,6 +204,14 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
       
       dispatch({ type: 'START_SESSION', payload: session });
     } catch (error) {
+      console.group('🚨 CHAT ERROR - Load Session');
+      console.error('❌ Error loading session:', error);
+      console.error('📍 Context:', {
+        timestamp: new Date().toISOString(),
+        sessionId: sessionId,
+        userId: authService.isAuthenticated() ? 'authenticated' : 'guest'
+      });
+      console.groupEnd();
       dispatch({ type: 'SET_ERROR', payload: error instanceof Error ? error.message : 'Failed to load session' });
     } finally {
       dispatch({ type: 'SET_LOADING', payload: false });
