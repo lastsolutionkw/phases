@@ -24,18 +24,18 @@ export default function ChatPage() {
 
           {/* Chat Interface */}
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg h-[70vh] flex flex-col">
+            {/* Emergency Notice */}
+            <div className="p-4 bg-red-50 dark:bg-red-900/20 border-b border-red-200 dark:border-red-800 rounded-t-xl">
+              <p className="text-sm text-red-800 dark:text-red-200">
+                <strong>{t('chat.emergencyNotice')}</strong> 
+                <a href="/emergency" className="underline font-medium ml-1 rtl:ml-0 rtl:mr-1">
+                  {t('chat.getSupport')}
+                </a>
+              </p>
+            </div>
+            
             <ChatWindow />
             <MessageInputBox />
-          </div>
-
-          {/* Emergency Notice */}
-          <div className="mt-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
-            <p className="text-sm text-red-800 dark:text-red-200">
-              <strong>{t('chat.emergencyNotice')}</strong> 
-              <a href="/emergency" className="underline font-medium ml-1 rtl:ml-0 rtl:mr-1">
-                {t('chat.getSupport')}
-              </a>
-            </p>
           </div>
         </div>
       </div>

@@ -82,8 +82,10 @@ export const debugChatService = {
 export async function testAPIConnectivity() {
   console.log('🌐 Testing API connectivity...');
   
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000/api/v1';
+  
   try {
-    const response = await fetch('http://localhost:8000/api/v1/');
+    const response = await fetch(`${API_BASE_URL}/`);
     console.log('API Base URL Response:', response.status, response.statusText);
     
     if (response.ok) {
