@@ -8,15 +8,15 @@ export async function testChatIntegration() {
     // Test 1: Check if we can start a chat session
     console.log('1. Testing chat session start...');
     const startResponse = await chatService.startChat();
-    console.log('✅ Chat session started:', startResponse.session_id);
+    console.log('✅ Chat session started:', startResponse.id);
     
     // Test 2: Test sending a message
     console.log('2. Testing message sending...');
     const messageResponse = await chatService.sendMessage({
-      session_id: startResponse.session_id,
+      session_id: startResponse.id,
       message: 'Hello, this is a test message'
     });
-    console.log('✅ Message sent and received reply:', messageResponse.reply);
+    console.log('✅ Message sent and received reply:', messageResponse.ai_response.content);
     
     // Test 3: Test loading chat history
     console.log('3. Testing chat history...');
@@ -25,7 +25,7 @@ export async function testChatIntegration() {
     
     // Test 4: Test loading specific session
     console.log('4. Testing session loading...');
-    const sessionResponse = await chatService.getChatSession(startResponse.session_id);
+    const sessionResponse = await chatService.getChatSession(startResponse.id);
     console.log('✅ Session loaded with', sessionResponse.messages.length, 'messages');
     
     console.log('🎉 All chat integration tests passed!');
