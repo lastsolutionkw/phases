@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useChat } from '@/contexts/ChatContext';
 
 interface MessageInputBoxProps {
   onSendMessage?: (message: string) => void;
@@ -10,13 +11,24 @@ interface MessageInputBoxProps {
 
 export default function MessageInputBox({ onSendMessage, disabled = false }: MessageInputBoxProps) {
   const { t } = useLanguage();
+  const { sendMessage, isLoading, isTyping } = useChat();
   const [message, setMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const isDisabled = disabled || isLoading || isTyping;
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (message.trim() && !disabled) {
-      onSendMessage?.(message.trim());
+    if (message.trim() && !isDisabled) {
+      const messageToSend = message.trim();
       setMessage('');
+      
+      try {
+        await sendMessage(messageToSend);
+        onSendMessage?.(messageToSend);
+      } catch (error) {
+        setMessage(messageToSend);
+        console.error('Failed to send message:', error);
+      }
     }
   };
 
@@ -39,12 +51,12 @@ export default function MessageInputBox({ onSendMessage, disabled = false }: Mes
             className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
             rows={1}
             style={{ minHeight: '44px', maxHeight: '120px' }}
-            disabled={disabled}
+            disabled={isDisabled}
           />
         </div>
         <button
           type="submit"
-          disabled={!message.trim() || disabled}
+          disabled={!message.trim() || isDisabled}
           className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 dark:disabled:bg-gray-600 text-white p-3 rounded-xl transition-colors disabled:cursor-not-allowed"
         >
           <svg 
