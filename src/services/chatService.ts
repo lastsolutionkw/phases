@@ -50,7 +50,7 @@ export interface ChatSessionResponse {
 
 export const chatService = {
   async startChat(title?: string): Promise<StartChatResponse> {
-    return api.post('/chat/start/', { title: title || "New Chat Session" });
+    return guestApi.post('/chat/guest/start/', { title: title || "New Chat Session" });
   },
 
   async startGuestChat(title?: string): Promise<StartChatResponse> {
@@ -58,7 +58,7 @@ export const chatService = {
   },
 
   async sendMessage(request: SendMessageRequest): Promise<SendMessageResponse> {
-    return api.post('/chat/message/', request);
+    return guestApi.post('/chat/message/', request);
   },
 
   async sendGuestMessage(request: SendMessageRequest): Promise<SendMessageResponse> {
@@ -70,7 +70,7 @@ export const chatService = {
   },
 
   async getChatSession(sessionId: string): Promise<ChatSessionResponse> {
-    return api.get(`/chat/session/${sessionId}/`);
+    return guestApi.get(`/chat/session/${sessionId}/`);
   },
 
   async getGuestChatSession(sessionId: string): Promise<ChatSessionResponse> {
