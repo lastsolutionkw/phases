@@ -1,10 +1,11 @@
-import { api } from './api';
+import { api, guestApi } from './api';
 import { ChatMessage, ChatSession } from '@/types';
 
 export interface StartChatResponse {
   id: string;
   title?: string;
   created_at: string;
+  is_authenticated?: boolean;
 }
 
 export interface SendMessageRequest {
@@ -52,8 +53,16 @@ export const chatService = {
     return api.post('/chat/start/', { title: title || "New Chat Session" });
   },
 
+  async startGuestChat(title?: string): Promise<StartChatResponse> {
+    return guestApi.post('/chat/guest/start/', { title: title || `Guest Mental Health Support - ${new Date().toLocaleString()}` });
+  },
+
   async sendMessage(request: SendMessageRequest): Promise<SendMessageResponse> {
     return api.post('/chat/message/', request);
+  },
+
+  async sendGuestMessage(request: SendMessageRequest): Promise<SendMessageResponse> {
+    return guestApi.post('/chat/message/', request);
   },
 
   async getChatHistory(): Promise<ChatHistoryResponse> {
@@ -62,6 +71,10 @@ export const chatService = {
 
   async getChatSession(sessionId: string): Promise<ChatSessionResponse> {
     return api.get(`/chat/session/${sessionId}/`);
+  },
+
+  async getGuestChatSession(sessionId: string): Promise<ChatSessionResponse> {
+    return guestApi.get(`/chat/session/${sessionId}/`);
   },
 
   async deleteChatSession(sessionId: string): Promise<void> {

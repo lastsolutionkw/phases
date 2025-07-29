@@ -98,6 +98,62 @@ async function fetchWithAuth(endpoint: string, options: RequestInit = {}, retryC
   return response;
 }
 
+async function fetchWithoutAuth(endpoint: string, options: RequestInit = {}): Promise<Response> {
+  const headers = {
+    'Content-Type': 'application/json',
+    ...options.headers,
+  };
+
+  const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    ...options,
+    headers,
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    
+    const errorDetails = {
+      timestamp: new Date().toISOString(),
+      endpoint: `${API_BASE_URL}${endpoint}`,
+      method: options.method || 'GET',
+      status: response.status,
+      statusText: response.statusText,
+      headers: Object.fromEntries(response.headers.entries()),
+      requestBody: options.body,
+      backendError: errorData,
+      userAgent: navigator.userAgent,
+      currentUrl: window.location.href
+    };
+    
+    console.group(`🚨 GUEST API ERROR [${response.status}] - ${endpoint}`);
+    console.error('❌ Request Failed:', errorDetails.endpoint);
+    console.error('📊 Status:', `${errorDetails.status} ${errorDetails.statusText}`);
+    console.error('🔍 Backend Error:', errorDetails.backendError);
+    console.error('📤 Request Details:', {
+      method: errorDetails.method,
+      body: errorDetails.requestBody,
+      headers: options.headers
+    });
+    console.error('🌐 Response Headers:', errorDetails.headers);
+    console.error('📍 Context:', {
+      timestamp: errorDetails.timestamp,
+      currentUrl: errorDetails.currentUrl,
+      userAgent: errorDetails.userAgent
+    });
+    console.groupEnd();
+    
+    throw new ApiError(
+      response.status,
+      errorData.detail || errorData.message || `HTTP ${response.status}: ${response.statusText}`,
+      errorData.code,
+      errorData,
+      errorDetails
+    );
+  }
+
+  return response;
+}
+
 export const api = {
   async get(endpoint: string) {
     const response = await fetchWithAuth(endpoint);
@@ -125,5 +181,20 @@ export const api = {
       method: 'DELETE',
     });
     return response.status === 204 ? null : response.json();
+  },
+};
+
+export const guestApi = {
+  async get(endpoint: string) {
+    const response = await fetchWithoutAuth(endpoint);
+    return response.json();
+  },
+
+  async post(endpoint: string, data?: any) {
+    const response = await fetchWithoutAuth(endpoint, {
+      method: 'POST',
+      body: data ? JSON.stringify(data) : undefined,
+    });
+    return response.json();
   },
 };
