@@ -2,37 +2,51 @@ import { api } from './api';
 import { User } from '@/types';
 
 export interface LoginRequest {
-  email: string;
+  username: string;
   password: string;
 }
 
 export interface RegisterRequest {
+  username: string;
   email: string;
   password: string;
-  name?: string;
+  password_confirm: string;
+  age: number;
+  gender: 'male' | 'female' | 'prefer_not_to_say';
+  country: string;
+  first_name?: string;
+  last_name?: string;
 }
 
 export interface AuthResponse {
-  access_token: string;
-  refresh_token: string;
   user: {
-    id: string;
+    id: number;
+    username: string;
     email: string;
-    name?: string;
+    first_name?: string;
+    last_name?: string;
+    date_joined: string;
   };
+  secure_user_id: string;
+  refresh: string;
+  access: string;
 }
 
 export interface RefreshResponse {
-  access_token: string;
+  access: string;
 }
 
 export const authService = {
   async login(credentials: LoginRequest): Promise<AuthResponse> {
-    return api.post('/auth/login/', credentials);
+    const response = await api.post('/auth/login/', credentials);
+    this.setTokens(response.access, response.refresh);
+    return response;
   },
 
   async register(userData: RegisterRequest): Promise<AuthResponse> {
-    return api.post('/auth/register/', userData);
+    const response = await api.post('/auth/register/', userData);
+    this.setTokens(response.access, response.refresh);
+    return response;
   },
 
   async refreshToken(): Promise<RefreshResponse> {
@@ -41,7 +55,7 @@ export const authService = {
       throw new Error('No refresh token available');
     }
     
-    return api.post('/auth/token/refresh/', { refresh_token: refreshToken });
+    return api.post('/auth/token/refresh/', { refresh: refreshToken });
   },
 
   async getProfile(): Promise<User> {
@@ -74,9 +88,9 @@ export const authService = {
 
   transformUserFromAPI(apiUser: any): User {
     return {
-      id: apiUser.id,
+      id: apiUser.id.toString(),
       email: apiUser.email,
-      name: apiUser.name,
+      name: apiUser.first_name && apiUser.last_name ? `${apiUser.first_name} ${apiUser.last_name}` : apiUser.username,
       isGuest: false,
       preferences: {
         language: apiUser.preferences?.language || 'en',
@@ -89,7 +103,7 @@ export const authService = {
     if (error.status === 401) {
       try {
         const response = await this.refreshToken();
-        this.setTokens(response.access_token, localStorage.getItem('refreshToken')!);
+        this.setTokens(response.access, localStorage.getItem('refreshToken')!);
         return true;
       } catch (refreshError) {
         this.clearTokens();

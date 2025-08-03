@@ -1,42 +1,54 @@
 'use client';
 
 import { useState } from 'react';
+import { authService, LoginRequest } from '@/services/authService';
 import { logger } from '@/utils/logger';
+import { useRouter } from 'next/navigation';
 
 export default function LoginForm() {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrors({});
     setIsLoading(true);
     
     logger.authEvent('login attempt started', {
       component: 'LoginForm',
-      email: email.substring(0, 3) + '***'
+      username: username.substring(0, 3) + '***'
     });
     
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const loginData: LoginRequest = {
+        username,
+        password
+      };
       
-      // TODO: Replace with actual API call
-      logger.warn('Login form using mock implementation', {
+      const response = await authService.login(loginData);
+      
+      logger.success('Login successful', {
         component: 'LoginForm',
-        action: 'mock-login'
+        username: username.substring(0, 3) + '***',
+        userId: response.user.id
       });
       
-      logger.success('Mock login completed', {
-        component: 'LoginForm',
-        email: email.substring(0, 3) + '***'
-      });
-    } catch (error) {
+      router.push('/chat');
+    } catch (error: any) {
       logger.error('Login failed', error, {
         component: 'LoginForm',
-        email: email.substring(0, 3) + '***'
+        username: username.substring(0, 3) + '***'
       });
+      
+      if (error.response?.data) {
+        setErrors(error.response.data);
+      } else {
+        setErrors({ general: 'Login failed. Please check your credentials.' });
+      }
     } finally {
       setIsLoading(false);
     }
@@ -44,19 +56,27 @@ export default function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      {errors.general && (
+        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-3">
+          <p className="text-red-600 dark:text-red-400 text-sm">{errors.general}</p>
+        </div>
+      )}
+      
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-          Email
+        <label htmlFor="username" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          Username
         </label>
         <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-          placeholder="Enter your email"
+          type="text"
+          id="username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className={`w-full px-3 py-2 border ${errors.username || errors.non_field_errors ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white`}
+          placeholder="Enter your username"
           required
         />
+        {errors.username && <p className="text-red-500 text-sm mt-1">{errors.username}</p>}
+        {errors.non_field_errors && <p className="text-red-500 text-sm mt-1">{errors.non_field_errors}</p>}
       </div>
 
       <div>
@@ -69,7 +89,7 @@ export default function LoginForm() {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-3 py-2 pr-10 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+            className={`w-full px-3 py-2 pr-10 border ${errors.password ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white`}
             placeholder="Enter your password"
             required
           />
@@ -90,6 +110,7 @@ export default function LoginForm() {
             )}
           </button>
         </div>
+        {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
       </div>
 
       <div className="flex items-center justify-between">
