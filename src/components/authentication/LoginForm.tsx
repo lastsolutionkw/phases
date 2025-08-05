@@ -34,7 +34,7 @@ export default function LoginForm() {
       logger.success('Login successful', {
         component: 'LoginForm',
         username: username.substring(0, 3) + '***',
-        userId: response.user.id
+        userId: String(response.user.id)
       });
       
       router.push('/chat');

@@ -62,7 +62,7 @@ export default function RegisterForm() {
       logger.success('Registration successful', {
         component: 'RegisterForm',
         username: formData.username.substring(0, 3) + '***',
-        userId: response.user.id
+        userId: String(response.user.id)
       });
       
       router.push('/chat');
